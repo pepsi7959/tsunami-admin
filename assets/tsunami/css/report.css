@@ -1,0 +1,82 @@
+button.custom-btn{
+	position: relative;
+display: inline-block;
+
+margin-right: 0.333em;
+margin-bottom: 0.333em;
+padding: 0.2em 1.0em;
+border: 1px solid #23c6c8;
+border-radius: 2px;
+cursor: pointer;
+font-size: 0.88em;
+line-height: 1.6em;
+color: white;
+white-space: nowrap;
+overflow: hidden;
+background-color: #23c6c8;
+border-radius: 6px;
+	background-image: none;
+}
+
+
+
+#excelbutton:hover{
+	position: relative;
+display: inline-block;
+
+margin-right: 0.333em;
+margin-bottom: 0.333em;
+padding: 0.2em 1em;
+border: 1px solid #23c6c8;
+border-radius: 2px;
+cursor: pointer;
+font-size: 0.88em;
+line-height: 1.6em;
+color: white;
+white-space: nowrap;
+overflow: hidden;
+background-color: #1bafb1;
+border-radius: 6px;
+	background-image: none;
+}
+
+
+
+#pdfbutton{
+	position: relative;
+display: inline-block;
+
+margin-right: 0.333em;
+margin-bottom: 0.333em;
+padding: 0.2em 1em;
+border: 1px solid #FF8F00;
+border-radius: 2px;
+cursor: pointer;
+font-size: 0.88em;
+line-height: 1.6em;
+color: white;
+white-space: nowrap;
+overflow: hidden;
+background-color:#FF8F00;
+border-radius: 6px;
+	background-image: none;
+}
+#pdfbutton:hover{
+	position: relative;
+display: inline-block;
+
+margin-right: 0.333em;
+margin-bottom: 0.333em;
+padding: 0.2em 1em;
+border: 1px solid #FF8F00;
+border-radius: 2px;
+cursor: pointer;
+font-size: 0.88em;
+line-height: 1.6em;
+color: white;
+white-space: nowrap;
+overflow: hidden;
+background-color:#d27a0b;
+border-radius: 6px;
+	background-image: none;
+}
