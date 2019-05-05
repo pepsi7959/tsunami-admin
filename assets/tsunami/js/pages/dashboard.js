@@ -9,200 +9,42 @@ $(function () {
 
 $(document).ready(function() {
     //Total M-devices
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this. responseText);
-        $("#numOfMDevices").text(json.data.active);
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totalmdevices", true);
-    xhttp.send();
-
-    //Total S-Devices
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this.responseText);
-        $("#numOfSDevices").text(json.data.active);
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totalsdevices", true);
-    xhttp.send();
-
-    //user registrations
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this.responseText);
-        $("#numOfUsers").text(json.data.active);
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totaluserregistrations", true);
-    xhttp.send();
-
-    //transaction
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this.responseText);
-        $("#numOfTransactions").text(json.data.active);
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totaltransactions", true);
-    xhttp.send();
-
-    // //Total M-devices per year
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this. responseText);
-        var data = json.data;
-        setMTotalChart(2018, data);
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totalmperyear", true);
-    xhttp.send();
-
-    //Total S-devices per year 
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var json = JSON.parse(this. responseText);
-        var data = json.data;
-        setSTotalChart(2016,data)
-        }
-    };
-    xhttp.open("GET", "api/v1/dashboard/totalsperyear", true);
-    xhttp.send();
+   
 
 });
 
 
-function setSTotalChart(point_start, data){
-    var colors = ['#48535e', '#ffdd00', '#fdb813', '#f17022', '#48535e', '#f15c80'];
-    Highcharts.chart('line-chart', {
-        colors: colors,
-        chart: {
-            backgroundColor:'none' 
-        },
-        title: {
-            text: ''
-        },
-
-        subtitle: {
-            text: ''
-        },
-
-        yAxis: {
-            title: {
-                text: 'Number of S-Series'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: point_start
-            }
-        },
-        backgroundColor: null,
-        series: [{
-            name: 'S-Series',
-            data: data
-        }],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
+var speed = $('#speed').text();
+    $('#hand').animate({ textIndent: 0 }, {
+            step: function(now) {
+                now = speed;
+                $('.meter .num').each(function() {
+                    for (var i = 0; i <= 1000; i++) {
+                        $('#num_' + (i + 1)).text(i * 30);
                     }
+                })
+                if ((now / 180) > 1) {
+                    var m = now / 180;
+                    $('.meter .num').each(function() {
+                        for (var i = 0; i <= 6; i++) {
+                            $('#num_' + (i + 1)).text(Math.round(i * 30 * m) * 2);
+                        }
+                    })
+                    $(this).css('-webkit-transform', 'rotate(' + 90 + 'deg)');
+                } else {
+                    $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
                 }
-            }]
-        },
 
-        credits: {
-            enabled: false
-        },
-
-        exporting: { enabled: false }
-    });
-}
-
-
-function setMTotalChart(point_start, data){
-    var colors = ['#ffffff', '#ffdd00', '#fdb813', '#f17022', '#48535e', '#f15c80'];
-    Highcharts.chart('m-series-line-chart', {
-        colors: colors,
-        chart: {
-            backgroundColor:'none' 
-        },
-        title: {
-            text: ''
-        },
-
-        subtitle: {
-            text: ''
-        },
-
-        yAxis: {
-            title: {
-                text: 'Number of M-Series'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: point_start
-            }
-        },
-        backgroundColor: null,
-        series: [{
-            name: 'M-Series',
-            data: data
-        }],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
+                $('#speed').prop('Counter', 0).animate({
+                    Counter: now
+                }, {
+                    duration: 2000,
+                    easing: 'linear',
+                    step: function(now) {
+                        $('#speed').text(Math.round(now * 100) / 100);
                     }
-                }
-            }]
+                });
+            },
+            duration: '1000'
         },
-
-        credits: {
-            enabled: false
-        },
-
-        exporting: { enabled: false },
-
-    });
-}
+        'linear');
