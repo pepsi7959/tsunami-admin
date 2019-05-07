@@ -69,6 +69,13 @@ class Home extends CI_Controller {
         $data['profiles'] = $this->auth->get_profiles();
 		$this->load->view('templates/body', $data);
     }
+    public function setting(){
+        $this->isLogin();
+        $data['title'] = 'Home';
+        $data['section'] = 'setting';
+        $data['profiles'] = $this->auth->get_profiles();
+		$this->load->view('templates/body', $data);
+    }
 
     public function isLogin(){
         if ( $this->auth->is_login() == FALSE ) {

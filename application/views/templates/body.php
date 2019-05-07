@@ -225,6 +225,14 @@ span.user-header {
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="setting" class="nav-link left-menu reports">
+              <i class="nav-icon fa fa-cog"></i>
+              <p>
+                Setting
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -308,7 +316,7 @@ span.user-header {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js" ></script>
 <!-- Customize Scripts -->
 <script src="<?php echo base_url()."assets" ?>/tsunami/js/utils.js"></script>
-<script data-main="<?php echo base_url()."assets" ?>/tsunamihttp://localhost:8080/tsunami-admin/assets/index3.html/js/pages/<?php echo $section?>.js" src="<?php echo base_url()."assets" ?>/tsunami/js/require.js"></script>
+<script data-main="<?php echo base_url()."assets" ?>/tsunami/js/pages/<?php echo $section?>.js" src="<?php echo base_url()."assets" ?>/tsunami/js/require.js"></script>
 
 <script type="text/javascript">
 var btn = $('#button-totop');
