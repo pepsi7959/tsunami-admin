@@ -23,11 +23,12 @@ $(document).ready(function() {
 function ajaxd(){
    
     if(stop_load){
+
         $.ajax({
             type: "GET",
-            url: 'home/callapi',
+            url: 'http://122.155.4.135:8091/api/v1/metrics',
             dataType: 'json',
-        
+            crossOrigin: true,
             success: function(result) {
                 console.log(result.data.rps);
                 rps = result.data.rps;
@@ -35,10 +36,27 @@ function ajaxd(){
                 console.log(numload);
                 $('#speedtest').text(numload);
                 test_load();
-            
+               
             }
-
+    
         });
+    
+        // $.ajax({
+        //     type: "GET",
+        //     url: 'home/callapi',
+        //     dataType: 'json',
+        
+        //     success: function(result) {
+        //         console.log(result.data.rps);
+        //         rps = result.data.rps;
+        //         numload = parseFloat(rps).toFixed(2);
+        //         console.log(numload);
+        //         $('#speedtest').text(numload);
+        //         test_load();
+            
+        //     }
+
+        // });
         // var numload = Math.floor((Math.random() * 1000) + 1);
         // $('#speedtest').text(numload);
         // console.log(numload);
@@ -74,15 +92,33 @@ $("#load").click(function(){
     // });
 
 
-    // $.getJSON("http://122.155.4.135:8091/api/v1/metrics", function(result){
-    //     // $.each(result, function(i, field){
-    //     //   $("div").append(field + " ");
-    //     // });
-    //     console.log(data);
-   // });
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: 'http://122.155.4.135:8091/api/v1/metrics',
+    //     dataType: 'json',
+       
+    //     success: function(result) {
+    //         console.log(result.data.rps);
+    //         rps = result.data.rps;
+    //         numload = parseFloat(rps).toFixed(2);
+    //         alert(numload);
+    //         $('#speedtest').text(numload);
+    //         test_load();
+           
+    //     }
+
+    // });
+
+//     $.getJSON("http://122.155.4.135:8091/api/v1/metrics", function(result){
+//         // $.each(result, function(i, field){
+//         //   $("div").append(field + " ");
+//         // });
+//         console.log(data);
+//    });
 
   
-  //  test_load();
+  // test_load();
    
 });
 function test_load(){
