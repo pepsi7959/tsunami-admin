@@ -197,6 +197,8 @@ element.style {
 } */
  </style>
  <!-- Content Wrapper. Contains page content -->
+
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -233,18 +235,16 @@ element.style {
             <img src="https://1.bp.blogspot.com/-46OIskSGdZc/WwzuFQ4Z24I/AAAAAAAAAsE/r-ElKrZKPNARDFGl5bY7-DHo7B-DSeJAgCLcBGAs/s1600/meter-hand.png" alt="" class="meter-hand" id="hand">
         </div>
         <div class="text-center mt-2">
-            <div class="speed"><span id="speed">95.3</span></div>
-            <div class="unit">MBPS</div>
+            <div class="speed"><span id="speedtest"></span></div>
+            <div class="unit">RPS</div>
         </div>
     </div>
-	<div class="row justify-content-center" style = "min-height:560px;">
+	<div class="row justify-content-center" style = "min-height:400px;">
                         <div class="col-12 col-md-10 col-lg-8">
                             <div class = "info">
                                 <h1>Distributed performance Testing, <p>apps and APIs faster</h1>
                                 <p>
-                            A SaaS performance testing solution for modern DevOps teams <p>
-
-Get automated Performance Alerts to quickly find issues
+                           
                             </div>
                             <form class="card card-sm" id = "search">
                                 <div class="card-body row no-gutters align-items-center">
@@ -261,11 +261,12 @@ Get automated Performance Alerts to quickly find issues
                                     </div>
                                    
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" id = "data-load" placeholder="Search topics or keywords">
                                     </div>
                                     
                                     <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                        <button class="btn btn-lg btn-success" id = "load" type="button">Load Test</button>
+                                        <button class="btn btn-lg btn-danger" id = "stop"   type="button">Stop Load</button>
                                     </div>
                                    
                                 </div>
@@ -297,65 +298,7 @@ Get automated Performance Alerts to quickly find issues
             
             <div class="row">
                 
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3 id="numOfSDevices"><?php echo $data['numOfS']; ?></h3>
-
-                        <p>S-Series</p>
-                    </div>
-                    <div class="icon">
-                        <i class="nav-icon fa fa-plug"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3 id="numOfMDevices"><?php echo $data['numOfM']; ?></h3>
-
-                        <p>M-Series</p>
-                    </div>
-                    <div class="icon">
-                        <i class="nav-icon fa fa-plug"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3 id="numOfUsers"><?php echo $data['numOfUsers']; ?></h3>
-                        <p>User Registrations</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-users"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3 id="numOfTransactions"><?php echo $data['numOfTransactions']; ?></h3>
-                        <p>Transactions</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
+              
         </div>
         </div>
         <!-- /.card-body -->

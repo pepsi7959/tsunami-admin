@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -47,6 +48,10 @@
                     <option>Washington</option>
                   </select>
                 </div>
+              <div class = "form-group">
+              <input type="text" class="form-control" id="tokenfield" value="red,green,blue" />
+              </div>
+              <input type="submit" class="btn btn-primary">
             </form>
             </div>
           </div>

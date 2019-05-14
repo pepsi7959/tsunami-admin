@@ -6,6 +6,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->library('auth');
+       
     }
 
 	public function index()
@@ -81,5 +82,20 @@ class Home extends CI_Controller {
         if ( $this->auth->is_login() == FALSE ) {
 			redirect('login');
 		}
+    }
+    public function callapi(){
+        
+        $this->isLogin();
+        $url = "http://122.155.4.135:8091/api/v1/metrics";
+        $ch = curl_init();  
+ 
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    //  curl_setopt($ch,CURLOPT_HEADER, false); 
+    
+        echo $output=curl_exec($ch);
+    
+        curl_close($ch);
+       
     }
 }
