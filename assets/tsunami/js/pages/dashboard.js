@@ -3,7 +3,7 @@ $(function () {
     //Right Menu
     $("a.dashboard").addClass('active');
     
-   
+    $('.select2').select2()
 
 });
 
@@ -11,26 +11,49 @@ $(document).ready(function() {
     //Total M-devices
     
   if($.cookie('tokenfield')){
-      $('#data-load').val($.cookie('tokenfield'));
-      
+    //  $('#data-load').val($.cookie('tokenfield'));
+    $('#data-load').val('http://164.115.17.181/netcoretest/Home/About');
+   
   }
   var stop_load = false;
+  $("#load-btn").attr("onclick", "").click(function () {
+        start_service();
+        if (this.value == "Start Load Test") {
+            
+            $(this).prop('value', 'Stop Load Test'); 
+        if($(this).hasClass("btn-success")){
+            
+                $("#load-btn").removeClass("btn-success");
+                $(this).addClass("btn-danger");  
+        }
+                
+        }else if (this.value == "Stop Load Test") {
         
+            $(this).prop('value', 'Start Load Test');
+            if($(this).hasClass("btn-danger")){
+                $("#load-btn").removeClass("btn-danger");         
+                $(this).addClass("btn-success");   
+            }   
+            stop_service();
+        
+        }
+    
+    });
 
 });
 
 
-function ajaxd(){
+function ajaxd(param_metric){
    
     if(stop_load){
-
+        console.log('ajaxd');
+        console.log(param_metric);
         $.ajax({
             type: "GET",
-            url: 'http://122.155.4.135:8091/api/v1/metrics',
+            url: param_metric,
             dataType: 'json',
             crossOrigin: true,
             success: function(result) {
-                console.log(result.data.rps);
                 rps = result.data.rps;
                 numload = parseFloat(rps).toFixed(2);
                 console.log(numload);
@@ -40,37 +63,54 @@ function ajaxd(){
             }
     
         });
-    
-        // $.ajax({
-        //     type: "GET",
-        //     url: 'home/callapi',
-        //     dataType: 'json',
-        
-        //     success: function(result) {
-        //         console.log(result.data.rps);
-        //         rps = result.data.rps;
-        //         numload = parseFloat(rps).toFixed(2);
-        //         console.log(numload);
-        //         $('#speedtest').text(numload);
-        //         test_load();
-            
-        //     }
-
-        // });
         // var numload = Math.floor((Math.random() * 1000) + 1);
         // $('#speedtest').text(numload);
         // console.log(numload);
         // test_load();
     }
 }
-$("#stop").click(function(){
+function stop_service(){
     stop_load = false;  
     console.log('stop');
-});
+}
 
-$("#load").click(function(){
+function start_service(){
+//$("#load-btn").click(function(){
     stop_load = true;
-    setInterval(ajaxd, 2000);
+    var url_text =  $('#data-load').val();
+    var arr = url_text.split('/');
+    var host_url = arr[2]+':80';
+    var Obj = {
+        cmd:'start',
+        conf: 
+          {name: 'service1',
+          url:  url_text,
+          concurrence : 1,
+          host : host_url
+          }
+        
+      };
+      var myString = JSON.stringify(Obj);
+    
+      $.ajax({
+        type: "POST",
+        url: 'http://122.155.4.135:8090/api/v1/admin/start',
+        data: myString,
+        dataType: 'json',
+        crossOrigin: true,
+        success: function(result) {
+            console.log(result.data.url);
+            var url_metric = result.data.url;
+            var param_metric = url_metric +'/metrics';
+           
+            setInterval( function() { ajaxd(param_metric); }, 2000 );
+           
+           
+        }
+
+    });
+    // setInterval(ajaxd(myString), 2000);
+    
    // var random = Math.floor((Math.random() * 1000) + 1);
     
 
@@ -93,34 +133,12 @@ $("#load").click(function(){
 
 
 
-    // $.ajax({
-    //     type: "GET",
-    //     url: 'http://122.155.4.135:8091/api/v1/metrics',
-    //     dataType: 'json',
-       
-    //     success: function(result) {
-    //         console.log(result.data.rps);
-    //         rps = result.data.rps;
-    //         numload = parseFloat(rps).toFixed(2);
-    //         alert(numload);
-    //         $('#speedtest').text(numload);
-    //         test_load();
-           
-    //     }
-
     // });
 
-//     $.getJSON("http://122.155.4.135:8091/api/v1/metrics", function(result){
-//         // $.each(result, function(i, field){
-//         //   $("div").append(field + " ");
-//         // });
-//         console.log(data);
-//    });
 
-  
-  // test_load();
    
-});
+///});
+}
 function test_load(){
 var speed = $('#speedtest').text();
 //alert(speed);
