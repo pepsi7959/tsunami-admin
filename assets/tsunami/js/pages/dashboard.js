@@ -72,6 +72,22 @@ function ajaxd(param_metric){
 function stop_service(){
     stop_load = false;  
     console.log('stop');
+
+    $.ajax({
+        type: "POST",
+        url: 'http://122.155.4.135:8090/api/v1/admin/stop',
+        data: JSON.stringify({
+            cmd:'stop',
+            conf: {
+                name: 'service1'
+            }
+          }),
+        dataType: 'json',
+        crossOrigin: true,
+        success: function(result) {
+            console.log(result.data.url);
+        }
+    });
 }
 
 function start_service(){
@@ -102,7 +118,7 @@ function start_service(){
             console.log(result.data.url);
             var url_metric = result.data.url;
             var param_metric = url_metric +'/metrics';
-           
+            console.log("url: "+param_metric);
             setInterval( function() { ajaxd(param_metric); }, 2000 );
            
            

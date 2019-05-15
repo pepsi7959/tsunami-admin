@@ -270,13 +270,13 @@ border-top-right-radius: 30px !important;
                             <div>
                                     <div class="card-body row no-gutters align-items-center">
                                         <div class = "row" style = "width:100%">
-                                        <div class = "col-7 col-md-5 col-lg-7">
+                                        <div class = "col-7 col-md-5 col-lg-10">
                                             <div class="input-group input-group-lg">
                                                 <input type="text"  id = "data-load" style="height:70px;" class="form-control form-control-lg form-control-borderless">
                                                 
                                             </div>
                                         </div>
-                                        <div class = "col-3 col-md-3 col-lg-3">
+                                        <!-- <div class = "col-3 col-md-3 col-lg-3">
                                             <div class="input-group input-group-lg" style="margin-left:-10px;">
                                             <button type="button" class="btn btn-warning input-group-lg dropdown-toggle"  style="height:70px;" data-toggle="dropdown">
                                             Action
@@ -289,7 +289,7 @@ border-top-right-radius: 30px !important;
                                             <li class="dropdown-item"><a href="#">Separated link</a></li>
                                             </ul>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class = "col-2 col-md-2 col-lg-2">
                                             <div class="input-group input-group-lg" style="margin-left:-20px;">
                                                 
