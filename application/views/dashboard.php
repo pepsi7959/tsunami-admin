@@ -7,20 +7,30 @@ header("Access-Control-Allow-Origin: *");
  /*** COLORS ***/
  @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
- .form-control-borderless {
+
+button.stop_button {
+    background: red !important;
+    
+}
+ .form-control-lg .form-control-borderless {
     border: none;
+    
 }
 
 .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
     border: none;
     outline: none;
     box-shadow: none;
+
 }
 
 #search {
     margin-top: 100px;
 }
-
+#data-load{
+    border-bottom-left-radius: 30px !important;
+border-top-left-radius: 30px !important;
+}
 element.style {
 }
 .input-group {
@@ -41,6 +51,10 @@ element.style {
 #search-dashboard{
     background: linear-gradient(20deg, #25a1d7 20%, #218db3 100%) !important;
     /* min-height: 60vh; */
+}
+#load-btn{
+    border-bottom-right-radius: 30px !important;
+border-top-right-radius: 30px !important;
 }
 /*Resize the wrap to see the search bar change!*/
 .wrap{
@@ -250,35 +264,51 @@ element.style {
                                 <p>
                            
                             </div>
-                            <form class="card card-sm" id = "search">
-                                <div class="card-body row no-gutters align-items-center">
-                                     <!-- <div class="input-group">
-   <input type="text" class="url form-control form-control-lg" placeholder="Enter a URL, e.g. test.loadimpact.com">
-    <div class="input-group-append">
-      <button class="btn btn-secondary border-radius" type="button">
-        <i class="fa fa-search"></i>Run free test
-      </button>
-    </div>
-  </div> -->
-                                    <div class="col-auto">
-                                        <i class="fa fa-search"></i>
+                            <form class="card-body" id = "search">
+
+                           
+                            <div>
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class = "row" style = "width:100%">
+                                        <div class = "col-7 col-md-5 col-lg-7">
+                                            <div class="input-group input-group-lg">
+                                                <input type="text"  id = "data-load" style="height:70px;" class="form-control form-control-lg form-control-borderless">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class = "col-3 col-md-3 col-lg-3">
+                                            <div class="input-group input-group-lg" style="margin-left:-10px;">
+                                            <button type="button" class="btn btn-warning input-group-lg dropdown-toggle"  style="height:70px;" data-toggle="dropdown">
+                                            Action
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="#">Action</a></li>
+                                            <li class="dropdown-item"><a href="#">Another action</a></li>
+                                            <li class="dropdown-item"><a href="#">Something else here</a></li>
+                                            <li class="dropdown-divider"></li>
+                                            <li class="dropdown-item"><a href="#">Separated link</a></li>
+                                            </ul>
+                                            </div>
+                                        </div>
+                                        <div class = "col-2 col-md-2 col-lg-2">
+                                            <div class="input-group input-group-lg" style="margin-left:-20px;">
+                                                
+                                                <span class="input-group-append">
+                                                <!-- <button class="btn btn-lg btn-success" id = "load-btn" type="button">Start Clock</button> -->
+                                                <input type="button"   style="height:70px;" class="btn btn-lg btn-success" id = "load-btn"   value="Start Load Test"/> 
+                                                </span>
+                                            </div>
+                                        </div>
+                                        </div>
                                     </div>
-                                   
-                                    <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" id = "data-load" placeholder="Search topics or keywords">
-                                    </div>
-                                    
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" id = "load" type="button">Load Test</button>
-                                        <button class="btn btn-lg btn-danger" id = "stop"   type="button">Stop Load</button>
-                                    </div>
-                                   
                                 </div>
+                               
+                             
                             </form>
                         </div>
                         <!--end of col-->
                     </div>
-</div>
+    </div>
         
       
   
