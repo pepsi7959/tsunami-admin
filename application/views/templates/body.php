@@ -88,7 +88,7 @@ span.user-header {
 
 </style> 
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="sidebar-collapse sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -236,7 +236,7 @@ span.user-header {
             </a>
           </li>
           <li class="nav-item">
-            <a href="setting" class="nav-link left-menu reports">
+            <a href="setting" class="nav-link left-menu setting">
               <i class="nav-icon fa fa-cog"></i>
               <p>
                 Setting

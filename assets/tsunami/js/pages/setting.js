@@ -1,15 +1,15 @@
 
 $(function () {
-  
+
+    //Right Menu
+    $("a.setting").addClass('active');
+
     //Initialize Select2 Elements
     $('.select2').select2()
 
-   
-    
+});
 
-  })
-
-  $(document).ready(function() {   
+$(document).ready(function() {   
     $('#tokenfield').tokenfield()
     
     $("form").submit(function(e) {
