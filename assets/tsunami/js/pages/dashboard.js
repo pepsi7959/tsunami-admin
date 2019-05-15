@@ -2,19 +2,92 @@ $(function () {
 
     //Right Menu
     $("a.dashboard").addClass('active');
-
+    
    
 
 });
 
 $(document).ready(function() {
     //Total M-devices
-   
+    
+  if($.cookie('tokenfield')){
+      $('#data-load').val($.cookie('tokenfield'));
+      
+  }
+  var stop_load = false;
+        
 
 });
 
 
-var speed = $('#speed').text();
+function ajaxd(){
+   
+    if(stop_load){
+        $.ajax({
+            type: "GET",
+            url: 'home/callapi',
+            dataType: 'json',
+        
+            success: function(result) {
+                console.log(result.data.rps);
+                rps = result.data.rps;
+                numload = parseFloat(rps).toFixed(2);
+                console.log(numload);
+                $('#speedtest').text(numload);
+                test_load();
+            
+            }
+
+        });
+        // var numload = Math.floor((Math.random() * 1000) + 1);
+        // $('#speedtest').text(numload);
+        // console.log(numload);
+        // test_load();
+    }
+}
+$("#stop").click(function(){
+    stop_load = false;  
+    console.log('stop');
+});
+
+$("#load").click(function(){
+    stop_load = true;
+    setInterval(ajaxd, 2000);
+   // var random = Math.floor((Math.random() * 1000) + 1);
+    
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: 'home/callapi',
+    //     dataType: 'json',
+       
+    //     success: function(result) {
+    //         console.log(result.data.rps);
+    //         rps = result.data.rps;
+    //         numload = parseFloat(rps).toFixed(2);
+    //         alert(numload);
+    //         $('#speedtest').text(numload);
+    //         test_load();
+           
+    //     }
+
+    // });
+
+
+    // $.getJSON("http://122.155.4.135:8091/api/v1/metrics", function(result){
+    //     // $.each(result, function(i, field){
+    //     //   $("div").append(field + " ");
+    //     // });
+    //     console.log(data);
+   // });
+
+  
+  //  test_load();
+   
+});
+function test_load(){
+var speed = $('#speedtest').text();
+//alert(speed);
     $('#hand').animate({ textIndent: 0 }, {
             step: function(now) {
                 now = speed;
@@ -47,4 +120,5 @@ var speed = $('#speed').text();
             },
             duration: '1000'
         },
-        'linear');
+    'linear');
+    }

@@ -59,5 +59,6 @@ $route['dashboard'] = 'home/dashboard';
 $route['report'] = 'home/report';
 $route['monitoring'] = 'home/monitoring';
 $route['setting'] = 'home/setting';
+$route['callapi'] = '';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
