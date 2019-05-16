@@ -101,7 +101,7 @@ function start_service(){
         conf: 
           {name: 'service1',
           url:  url_text,
-          concurrence : 1,
+          concurrence : 10,
           host : host_url
           }
         
