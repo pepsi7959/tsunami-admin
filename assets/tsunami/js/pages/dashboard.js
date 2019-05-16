@@ -94,6 +94,8 @@ function start_service(){
 //$("#load-btn").click(function(){
     stop_load = true;
     var url_text =  $('#data-load').val();
+    var type_select =  $('#type').find(":selected").val();
+ 
     var arr = url_text.split('/');
     var host_url = arr[2]+':80';
     var Obj = {
@@ -101,6 +103,7 @@ function start_service(){
         conf: 
           {name: 'service1',
           url:  url_text,
+          type: type_select,
           concurrence : 10,
           host : host_url
           }
