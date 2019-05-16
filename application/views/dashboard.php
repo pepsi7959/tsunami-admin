@@ -139,7 +139,7 @@ border-top-right-radius: 30px !important;
 }
 
 .meter .num {
-    font-size: 1rem;
+    font-size: 0.6rem;
     font-weight: 600;
     position: absolute;
 }
