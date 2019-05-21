@@ -95,7 +95,16 @@ function start_service(){
     stop_load = true;
     var url_text =  $('#data-load').val();
     var type_select =  $('#type').find(":selected").val();
- 
+    var header_textarea =  $('#header').val();
+    var body_textarea =  $('#body').val();
+    var header_text = JSON.parse(header_textarea.replace(/\r?\n/g, ''));
+   if($('#data-concerrence').val()== ""){
+        var data_connerrence = 100;
+   }else{
+       var data_connerrence =  parseInt($('#data-concerrence').val());
+   }
+   
+   
     var arr = url_text.split('/');
     var host_url = arr[2]+':80';
     var Obj = {
@@ -103,14 +112,16 @@ function start_service(){
         conf: 
           {name: 'service1',
           url:  url_text,
-          type: type_select,
-          concurrence : 10,
-          host : host_url
-          }
+          method: type_select,
+          concurrence : data_connerrence,
+          host : host_url,
+          headers: header_text,
+          body:""
+        }
         
       };
       var myString = JSON.stringify(Obj);
-    
+     console.log(myString);
       $.ajax({
         type: "POST",
         url: 'http://122.155.4.135:8090/api/v1/admin/start',
@@ -128,35 +139,7 @@ function start_service(){
         }
 
     });
-    // setInterval(ajaxd(myString), 2000);
-    
-   // var random = Math.floor((Math.random() * 1000) + 1);
-    
-
-    // $.ajax({
-    //     type: "GET",
-    //     url: 'home/callapi',
-    //     dataType: 'json',
-       
-    //     success: function(result) {
-    //         console.log(result.data.rps);
-    //         rps = result.data.rps;
-    //         numload = parseFloat(rps).toFixed(2);
-    //         alert(numload);
-    //         $('#speedtest').text(numload);
-    //         test_load();
-           
-    //     }
-
-    // });
-
-
-
-    // });
-
-
    
-///});
 }
 function test_load(){
 var speed = $('#speedtest').text();

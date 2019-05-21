@@ -51,7 +51,9 @@ font-size: medium;
     margin-top: 50px;
 }
 #data-load{
-    
+    font-size: 16px;
+}#data-concerrence{
+font-size: 16px;
 }
 element.style {
 }
@@ -224,9 +226,13 @@ border-top-right-radius: 30px !important;
 }
 #advance  a.active{
     color: #717171;
+    /* max-width: 400px;
+    min-width: 200px; */
 }
 #advance  a{
     color: #717171;
+    /* max-width:  400px;
+    min-width: 200px; */
 }
 #tabs .nav-tabs .nav-link {
     border: 1px solid transparent;
@@ -235,10 +241,20 @@ border-top-right-radius: 30px !important;
     color: #eee;
     font-size: 20px;
 }
+.tab-content {
+    /* max-width: 400px;
+    min-width: 200px; */
+}
 #advance{
     background-color :white;
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
     border-top-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
+    width: 100%;
+    /* max-height: 700px;
+    min-height: 300px; */
 }
+/* li.selected .active > a.dropdown-item.active {
+    background-color :#ff8700 !important;
+} */

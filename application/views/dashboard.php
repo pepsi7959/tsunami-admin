@@ -60,22 +60,27 @@
                                         <div class = "col-2 col-md-2 col-lg-2">
                                         <div class="input-group input-group-lg type-loadtest">
                                         <select class="selectpicker" id = "type" width = "100%">
-                                            <option value = "get">GET</option>
-                                            <option value = "post">POST</option>
+                                            <option value = "GET">GET</option>
+                                            <option value = "POST">POST</option>
                                           
                                         </select>
 
                                         </div>
                                         </div>
-                                        <div class = "col-8 col-md-6 col-lg-8">
+                                        <div class = "col-6 col-md-6 col-lg-6">
                                             <div class="input-group input-group-lg"  style="margin-left:-15px;">
                                                 <input type="text"  id = "data-load" style="height:60px;" class="form-control form-control-lg form-control-borderless">
                                                 
                                             </div>
                                         </div>
-                                       
                                         <div class = "col-2 col-md-2 col-lg-2">
-                                            <div class="input-group input-group-lg" style="margin-left:-30px;">
+                                            <div class="input-group input-group-lg"  style="margin-left:-30px;">
+                                                <input type="text"  id = "data-concerrence" style="height:60px;" class="form-control form-control-lg form-control-borderless" placeholder = "concerrence">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class = "col-2 col-md-2 col-lg-2">
+                                            <div class="input-group input-group-lg" style="margin-left:-45px;">
                                                 
                                                 <span class="input-group-append">
                                                 <!-- <button class="btn btn-lg btn-success" id = "load-btn" type="button">Start Clock</button> -->
@@ -86,27 +91,22 @@
                                         </div>
                                     </div>
                                     <div class="card-body row no-gutters align-items-center">
-                                    <div class="row" id = "advance">
-                                        <div class="col-xs-12 ">
+                                    <div class="row" id = "advance"  style =  "widht:1000px;">
+                                        <div class="col-lg-12 "  style =  "widht:1000px;">
                                             <nav>
                                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Header</a>
-                                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Body</a>
+                                                    <a class="nav-item nav-link" id="nav-body-tab" data-toggle="tab" href="#nav-body" role="tab" aria-controls="nav-body" aria-selected="false">Body</a>
                                                 </div>
                                             </nav>
                                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                                                </div>
-                                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                                                </div>
-                                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                                                </div>
-                                                <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                                                </div>
+                                                <textarea class="form-control" id = "header" style="resize: both;" rows="5" placeholder = "{'Content-Type': 'x-www-form-urlencoded'}"></textarea>
+                                                 </div>
+                                                <div class="tab-pane fade" id="nav-body" role="tabpanel" aria-labelledby="nav-body-tab" >
+                                                <textarea class="form-control" id = "body" style="resize: both;" rows="5" ></textarea>
+                                              </div>
+                                                
                                             </div>
                                         
                                         </div>
