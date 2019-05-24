@@ -1,24 +1,32 @@
+$('#tokenfield').tokenfield();
 
-$(function () {
-
-    //Right Menu
-    $("a.setting").addClass('active');
-
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
+$(document).ready(function() {
+  
 });
+$("#submit").attr("onclick", "").click(function () {
+   
+    $.ajax({
+        type: "POST",
+        url:  'setting/UpdateIP',
+        dataType: 'json',
+        data: { listip : $('#tokenfield').val()},
+        success: function(result) {
+           
+            console.log(result.status);
+            if(result.status === 'fail'){
+                alert('fail');
+            } if(result.status === 'success'){
+                alert('success');
+            }
+          
+            // rps = result.data.rps;
+            // numload = parseFloat(rps).toFixed(2);
+            // console.log(numload);
+            // $('#speedtest').text(numload);
+            // test_load();
+           
+        }
 
-$(document).ready(function() {   
-    $('#tokenfield').tokenfield()
-    
-    $("form").submit(function(e) {
-        e.preventDefault();
-        $('.form-data').text($('#tokenfield').val());
-       //tokenfieldtokenfield alert($('#tokenfield').val());
-
-        $.cookie('tokenfield', $('#tokenfield').val());
-        //alert($('#tokenfield').val());
-        alert($.cookie('tokenfield'));
     });
+
 });

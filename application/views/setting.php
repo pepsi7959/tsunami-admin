@@ -37,7 +37,7 @@
 
               
                   <label>Multiple</label>
-                  <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                  <!-- <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
                           style="width: 100%;">
                     <option>Alabama</option>
                     <option>Alaska</option>
@@ -46,12 +46,12 @@
                     <option>Tennessee</option>
                     <option>Texas</option>
                     <option>Washington</option>
-                  </select>
+                  </select> -->
                 </div>
               <div class = "form-group">
-              <input type="text" class="form-control" id="tokenfield" value="red,green,blue" />
+              <input type="text" class="form-control" id="tokenfield" value="<?php echo $listIP; ?>" />
               </div>
-              <input type="submit" class="btn btn-primary">
+              <input type="button" id = "submit" value = "Submit" class="btn btn-primary">
             </form>
             </div>
           </div>
