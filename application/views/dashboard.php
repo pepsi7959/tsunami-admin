@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><?php echo $title ?></h1>
+            <h1><?php echo $title;?></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -53,7 +53,7 @@
                             </div>
                             <form class="card-body" id = "search">
 
-                           
+                            <input type='hidden' id="ipshooting" value="<?php echo $ip; ?>" />
                             <div>
                                     <div class="card-body row no-gutters align-items-center">
                                         <div class = "row" style = "width:100%">

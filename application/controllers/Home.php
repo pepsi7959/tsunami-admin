@@ -6,6 +6,11 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->library('auth');
+        $this->load->database('');
+        $this->load->model(
+			array(
+                 'm_setting'
+			));
        
     }
 
@@ -27,6 +32,14 @@ class Home extends CI_Controller {
             'numOfUsers' =>0,
             'numOfTransactions' => 0
         );
+        $qret = $this->m_setting->piorityList();
+        $ipshooting = "";
+        foreach($qret['results'] as $item){
+
+            $ipshooting .= ",".$item->domain.":".$item->port; 
+        }
+         $ipshooting = substr($ipshooting, 1); 
+        $data['ip'] = $ipshooting;
         $data['profiles'] = $this->auth->get_profiles();
 		$this->load->view('templates/body', $data);
     }

@@ -6,15 +6,18 @@ $(function () {
     $('.select2').select2()
 
 });
-
+function getShootingIP(){
+    return IP_SHOOTING = $('#ipshooting').val();
+}
 $(document).ready(function() {
     //Total M-devices
-    
-  if($.cookie('tokenfield')){
-    //  $('#data-load').val($.cookie('tokenfield'));
-    $('#data-load').val('http://164.115.17.181/netcoretest/Home/About');
+    //console.log("amazon"+$('#ipshooting').val());
+
    
-  }
+    //  $('#data-load').val($.cookie('tokenfield'));
+    $('#data-load').val('http://164.115.17.180/social/index.php/api/v1/member/account/login');
+   
+  
   var stop_load = false;
   $("#load-btn").attr("onclick", "").click(function () {
         start_service();
@@ -70,12 +73,15 @@ function ajaxd(param_metric){
     }
 }
 function stop_service(){
+    var IP = getShootingIP();
+    var url_stop = 'http://'+IP + '/api/v1/admin/stop';
+
     stop_load = false;  
     console.log('stop');
 
     $.ajax({
         type: "POST",
-        url: 'http://122.155.4.135:8090/api/v1/admin/stop',
+        url: url_stop,
         data: JSON.stringify({
             cmd:'stop',
             conf: {
@@ -85,18 +91,22 @@ function stop_service(){
         dataType: 'json',
         crossOrigin: true,
         success: function(result) {
-            console.log(result.data.url);
+            console.log(result);
         }
     });
 }
 
 function start_service(){
+    var IP = getShootingIP();
+    var url_start = 'http://'+IP + '/api/v1/admin/start';
+  //alert(url_start);
 //$("#load-btn").click(function(){
     stop_load = true;
     var url_text =  $('#data-load').val();
     var type_select =  $('#type').find(":selected").val();
     var header_textarea =  $('#header').val();
     var body_textarea =  $('#body').val();
+
     var header_text = JSON.parse(header_textarea.replace(/\r?\n/g, ''));
    if($('#data-concerrence').val()== ""){
         var data_connerrence = 100;
@@ -116,14 +126,14 @@ function start_service(){
           concurrence : data_connerrence,
           host : host_url,
           headers: header_text,
-          body:""
-          }
+          body:body_textarea
+        }
       };
       var myString = JSON.stringify(Obj);
      console.log(myString);
       $.ajax({
         type: "POST",
-        url: 'http://122.155.4.135:8090/api/v1/admin/start',
+        url: url_start,
         data: myString,
         dataType: 'json',
         crossOrigin: true,
