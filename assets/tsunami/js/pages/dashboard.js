@@ -128,7 +128,6 @@ function start_service(){
           headers: header_text,
           body:body_textarea
         }
-        
       };
       var myString = JSON.stringify(Obj);
      console.log(myString);
@@ -166,7 +165,13 @@ var speed = $('#speedtest').text();
                     var m = now / 180;
                     $('.meter .num').each(function() {
                         for (var i = 0; i <= 6; i++) {
-                            $('#num_' + (i + 1)).text(Math.round(i * 30 * m) * 2);
+                        		var v = Math.round(i * 30 * m) * 2
+                            if( v >= 1000 && v < 1000000){
+                            	v = (v/1000).toFixed(1)+"K";
+                            }else if( v >= 1000000){
+                            	v = (v/1000000).toFixed(1)+"M";
+                            }
+                            $('#num_' + (i + 1)).text(v);
                         }
                     })
                     $(this).css('-webkit-transform', 'rotate(' + 90 + 'deg)');
