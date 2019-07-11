@@ -7,6 +7,7 @@ class Home extends CI_Controller {
         $this->load->library('session');
         $this->load->library('auth');
         $this->load->database('');
+        $this->load->helper('url');
         $this->load->model(
 			array(
                  'm_setting'
