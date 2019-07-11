@@ -1,4 +1,5 @@
 
+<?php echo base_url();?>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
 
  <!-- Content Wrapper. Contains page content -->
@@ -29,7 +30,7 @@
     <div class="box">
         
         <div class="meter position-relative">
-            <img src="https://3.bp.blogspot.com/-Yo4A1PpnlqU/WwzvPaRfdRI/AAAAAAAAAsU/B9TOcrsmu_40LTL-JWHdzUNyeURz22FiACLcBGAs/s1600/meter-bg.png" alt="" class="img-fluid">
+            <img src="<?php echo base_url("assets/img/meter-bg.png");?>" alt="" class="img-fluid">
             <span class="num" id="num_1"></span>
             <span class="num" id="num_2"></span>
             <span class="num" id="num_3"></span>
@@ -37,13 +38,75 @@
             <span class="num" id="num_5"></span>
             <span class="num" id="num_6"></span>
             <span class="num" id="num_7"></span>
-            <img src="https://1.bp.blogspot.com/-46OIskSGdZc/WwzuFQ4Z24I/AAAAAAAAAsE/r-ElKrZKPNARDFGl5bY7-DHo7B-DSeJAgCLcBGAs/s1600/meter-hand.png" alt="" class="meter-hand" id="hand">
+            <img src="<?php echo base_url("assets/img/meter-hand.png");?>" alt="" class="meter-hand" id="hand">
         </div>
         <div class="text-center mt-2">
             <div class="speed"><span id="speedtest"></span></div>
             <div class="unit">RPS</div>
         </div>
+
+
+
+        
     </div>
+
+    <div class="card-body">
+            <div class="row" style = "padding:10px 60px;justify-content: center;">
+                
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-warning" style = "height:100px;">
+                    <div class="inner">
+                    <div id="numOfMin"><h3></h3></div>
+
+                        <p>Min</p>
+                    </div>
+                   
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+                
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-success" style = "height:100px;">
+                    <div class="inner">
+                        <div id = "numOfAvg"><h3 ></h3></div>
+
+                        <p>Average</p>
+                    </div>
+                   
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-primary" style = "height:100px;">
+                    <div class="inner">
+                    <div id="numOfMax"><h3></h3></div>
+                        <p>Max</p>
+                    </div>
+                    
+                   
+                    </div>
+                </div>
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-danger" style = "height:100px;">
+                    <div class="inner">
+                    <div id="numOfError"><h3></h3></div>
+                        <p>Error</p>
+                    </div>
+                    
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+               
+                <!-- ./col -->
+        </div>
+  </div>
 	<div class="row justify-content-center" style = "min-height:400px;">
                         <div class="col-12 col-md-10 col-lg-8">
                             <div class = "info">
@@ -101,8 +164,42 @@
                                             </nav>
                                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                <textarea class="form-control" id = "header" style="resize: both;" rows="5" placeholder = "{'Content-Type': 'x-www-form-urlencoded'}"></textarea>
-                                                 </div>
+                                                <input type="button" class="add-row btn btn-success" value="Add Row" id = "addrow">
+                                                <input type="button" class="add-row  btn btn-danger" value="Delete Row" id = "delrow">
+                                                <table id = "table-header">
+                                                    <thead>
+                                                        <tr >   
+                                                            <th >#</th>
+                                                            <th >Key</th>
+                                                            <th >Value</th>
+                                                            <th style = "">Description</th>
+                                                          
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><input type="checkbox" name="record"></td>
+                                                            <td><input type="text" class="form-control key" id="key_1" name="key_1" value=""></td>
+                                                            <td><input type="text" class="form-control value" id="value_1" name="value_1" value=""></td>
+                                                            <td><input type="text" class="form-control desc" id="desc_1" name="desc_1" value=""></td>
+                                                            
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+
+
+                                               
+                                                <!-- <textarea class="form-control" id = "header" style="resize: both;" rows="5" placeholder = "{'Content-Type': 'x-www-form-urlencoded'}"></textarea>
+                                                 -->
+                                                
+                                                
+                                                </div>
+
+
+
                                                 <div class="tab-pane fade" id="nav-body" role="tabpanel" aria-labelledby="nav-body-tab" >
                                                 <textarea class="form-control" id = "body" style="resize: both;" rows="5" ></textarea>
                                               </div>
