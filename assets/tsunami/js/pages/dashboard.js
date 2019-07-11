@@ -15,7 +15,7 @@ $(document).ready(function() {
 
    
     //  $('#data-load').val($.cookie('tokenfield'));
-    $('#data-load').val('http://164.115.17.180/social/index.php/api/v1/member/account/login');
+    $('#data-load').val('');
    
   
   var stop_load = false;
@@ -104,10 +104,13 @@ function start_service(){
     stop_load = true;
     var url_text =  $('#data-load').val();
     var type_select =  $('#type').find(":selected").val();
-    var header_textarea =  $('#header').val();
+    var header_textarea =  $('#header').val() == ""? "{}":$('#header').val();
+
     var body_textarea =  $('#body').val();
 
     var header_text = JSON.parse(header_textarea.replace(/\r?\n/g, ''));
+   
+   
    if($('#data-concerrence').val()== ""){
         var data_connerrence = 100;
    }else{
@@ -116,7 +119,15 @@ function start_service(){
    
    
     var arr = url_text.split('/');
-    var host_url = arr[2]+':80';
+    var arr_port = url_text.split(':');
+    if(arr_port.length == '3'){
+        var host_url = arr[2];
+    }else{
+        var host_url = arr[2]+':80';
+    }
+   
+
+   
     var Obj = {
         cmd:'start',
         conf: 
