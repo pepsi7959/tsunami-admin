@@ -1,3 +1,24 @@
+$(document).ready(function(){
+    $("#addrow").click(function(){
+      alert('dd');
+        var markup = "<tr>";
+         markup += "<td><input type='checkbox' name='record'></td>";
+         markup +=  "<td><input type= 'text'  id='key' value= ''  style='width: 100%'></td>";
+         markup +=  "<td><input type= 'text'  id='value' value= ''  style='width: 100%'></td>";
+         markup +=  "<td><input type= 'text'  id='desc' value= ''  style='width: 100%'></td>";
+         markup +=   "</tr>";
+        $("table tbody").append(markup);
+    });
+    
+    // Find and remove selected table rows
+    $("#delrow").click(function(){
+        $("table tbody").find('input[name="record"]').each(function(){
+            if($(this).is(":checked")){
+                $(this).parents("tr").remove();
+            }
+        });
+    });
+});    
 $(function () {
 
     //Right Menu
@@ -57,10 +78,19 @@ function ajaxd(param_metric){
             dataType: 'json',
             crossOrigin: true,
             success: function(result) {
+                console.log(result);
                 rps = result.data.rps;
                 numload = parseFloat(rps).toFixed(2);
+                numOfMax = parseFloat(result.data.max).toFixed(2);
+                numOfError = parseFloat(result.data.errors_count).toFixed(2);
+                numOfMin = parseFloat(result.data.min).toFixed(2);
+                numOfAvg = parseFloat(result.data.avg).toFixed(2);
                 console.log(numload);
                 $('#speedtest').text(numload);
+                $('#numOfError').text(numOfError);
+                $('#numOfMin').text(numOfMin);
+                $('#numOfMax').text(numOfMax);
+                $('#numOfAvg').text(numOfAvg);
                 test_load();
                
             }
@@ -149,7 +179,9 @@ function start_service(){
         dataType: 'json',
         crossOrigin: true,
         success: function(result) {
-            console.log(result.data.url);
+           // console.log(result);
+            //console.log(result.data.url);
+            
             var url_metric = result.data.url;
             var param_metric = url_metric +'/metrics';
             console.log("url: "+param_metric);

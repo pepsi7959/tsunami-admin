@@ -50,6 +50,61 @@
     </div>
 
     <div class="card-body">
+    <div class="row" style = "padding:10px 60px;justify-content: center;">
+                
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-warning" style = "height:100px;">
+                    <div class="inner">
+                    <h3><div id="numOfMin">0</div></h3>
+
+                        <p>Min</p>
+                    </div>
+                   
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+                
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-success" style = "height:100px;">
+                    <div class="inner">
+                    <h3 > <div id = "numOfAvg">0</div></h3>
+
+                        <p>Average</p>
+                    </div>
+                   
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-primary" style = "height:100px;">
+                    <div class="inner">
+                    <h3><div id="numOfMax">0</div></h3>
+                        <p>Max</p>
+                    </div>
+                    
+                   
+                    </div>
+                </div>
+                <div class="col-xl-2 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-danger" style = "height:100px;">
+                    <div class="inner">
+                    <h3> <div id="numOfError">0</div></h3>
+                        <p>Error</p>
+                    </div>
+                    
+                   
+                    </div>
+                </div>
+                <!-- ./col -->
+               
+                <!-- ./col -->
+        </div>
            
   </div>
 	<div class="row justify-content-center" style = "min-height:400px;">
@@ -109,6 +164,33 @@
                                             </nav>
                                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                                <!-- <input type="button" class="add-row btn btn-success" value="Add Row" id = "addrow">
+                                                <input type="button" class="add-row  btn btn-danger" value="Delete Row" id = "delrow">
+                                                <table id = "table-header">
+                                                    <thead>
+                                                        <tr >   
+                                                            <th  >#</th>
+                                                            <th  width = "35%" >Key</th>
+                                                            <th width = "35%">Value</th>
+                                                            <th  width = "35%">Description</th>
+                                                          
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><input type="checkbox" name="record"></td>
+                                                            <td ><input type="text" id="key" value=""   style="width: 100%"></td>
+                                                            <td  ><input type="text"id="value" value=""  style="width: 100%"></td>
+                                                            <td  ><input type="text"  id="desc"value="" style="width: 100%" ></td>
+                                                            
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table> -->
+
+
+
                                                 <textarea class="form-control" id = "header" style="resize: both;" rows="5" placeholder = "{'Content-Type': 'x-www-form-urlencoded'}"></textarea>
                                                 </div>
                                                 <div class="tab-pane fade" id="nav-body" role="tabpanel" aria-labelledby="nav-body-tab" >
