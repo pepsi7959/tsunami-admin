@@ -59,7 +59,7 @@ class M_setting extends CI_Model{
     }
     public function InsertServerList($serverList){
 
-        if($this->db->insert_batch($this->TBL_SERVERLIST, $serverList)){
+        if($this->db->insert('ServerLists', $serverList)){
              print_r($this->db->last_query());    
             return true;
         }
