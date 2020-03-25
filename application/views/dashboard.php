@@ -65,9 +65,9 @@
                             <div>
                                     <div class="card-body row no-gutters align-items-center">
                                         <div class = "row" style = "width:100%">
-                                        <div class = "col-2 col-md-2 col-lg-2">
-                                        <div class="input-group input-group-lg type-loadtest">
-                                        <select class="selectpicker" id = "type" width = "100%">
+                                        <div class = "col-2 col-md-2 col-lg-2" style="padding:0px">
+                                        <div class="input-group input-group-lg type-loadtest" >
+                                        <select class="selectpicker" id = "type" width = "100%" >
                                             <option value = "GET">GET</option>
                                             <option value = "POST">POST</option>
                                         
@@ -75,24 +75,22 @@
 
                                         </div>
                                         </div>
-                                        <div class = "col-6 col-md-6 col-lg-6">
-                                            <div class="input-group input-group-lg"  style="margin-left:-15px;">
-                                                <input type="text"  id = "data-load" style="height:60px;" class="form-control form-control-lg form-control-borderless">
+                                        <div class = "col-6 col-md-6 col-lg-6" style="padding:0px">
+                                            <div class="input-group input-group-lg"  style="height: 100%;">
+                                                <input type="text"  id = "data-load" class="form-control form-control-lg form-control-borderless">
                                                 
                                             </div>
                                         </div>
-                                        <div class = "col-2 col-md-2 col-lg-2">
-                                            <div class="input-group input-group-lg"  style="margin-left:-30px;">
-                                                <input type="text"  id = "data-concerrence" style="height:60px;" class="form-control form-control-lg form-control-borderless" placeholder = "concerrence">
+                                        <div class = "col-2 col-md-2 col-lg-2" style="padding:0px">
+                                            <div class="input-group input-group-lg"   style="height: 100%;">
+                                                <input type="text"  id = "data-concerrence" class="form-control form-control-lg form-control-borderless" placeholder = "concerrence">
                                                 
                                             </div>
                                         </div>
-                                        <div class = "col-2 col-md-2 col-lg-2">
-                                            <div class="input-group input-group-lg" style="margin-left:-45px;">
-                                                
-                                                <span class="input-group-append">
-                                                <!-- <button class="btn btn-lg btn-success" id = "load-btn" type="button">Start Clock</button> -->
-                                                <input type="button"   style="height:60px;" class="btn btn-lg btn-success" id = "load-btn"   value="Start Load Test"/> 
+                                        <div class = "col-2 col-md-2 col-lg-2" style="padding:0px">
+                                            <div class="input-group input-group-lg" style="height: 100%;">
+                                                <span class="input-group-append" style="width:100%">
+                                                <input type="button"  class="btn btn-lg btn-success" style="width: inherit" id = "load-btn"   value="Start"/> 
                                                 </span>
                                             </div>
                                         </div>
