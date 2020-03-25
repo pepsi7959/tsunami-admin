@@ -35,7 +35,7 @@ button.stop_button {
 
 text-align: center;
 vertical-align: middle !important;
-padding-top: 10px;
+padding-top: 0px;
 font-size: medium;
 }
 .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
