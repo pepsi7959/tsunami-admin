@@ -14,6 +14,12 @@ $(document).ready(function () {
 
     $('#data-load').val('');
     var stop_load = false;
+
+    $('#header').val(readHeader());
+    $('#body').val(readBody());
+    $('#data-load').val(readUrl());
+    $('#data-concerrence').val(readConcurrence());
+
     $("#load-btn").attr("onclick", "").click(function () {
         start_service();
         if (this.value == "Start") {
@@ -67,7 +73,7 @@ function ajaxd(url_metric, params) {
 
 function stop_service() {
     var IP = getShootingIP();
-    var url_stop = 'http://' + IP + '/api/v1/admin/stop';
+    var url_stop = 'http://' + IP + '/api/v1/stop';
 
     stop_load = false;
     console.log('stop');
@@ -92,8 +98,8 @@ function stop_service() {
 function start_service() {
 
     var IP = getShootingIP();
-    var PORT = "8080";
-    var url_start = 'http://' + IP + ":" + PORT + '/api/v1/start';
+
+    var url_start = 'http://' + IP + '/api/v1/start';
 
     stop_load = true;
 
@@ -104,12 +110,16 @@ function start_service() {
     var body_textarea = $('#body').val();
     var header_text = JSON.parse(header_textarea.replace(/\r?\n/g, ''));
 
+    var data_connerrence = 30;
 
-    if ($('#data-concerrence').val() == "") {
-        var data_connerrence = 30;
-    } else {
-        var data_connerrence = parseInt($('#data-concerrence').val());
+    if ($('#data-concerrence').val() != "") {
+        data_connerrence = parseInt($('#data-concerrence').val());
     }
+
+    saveBody(body_textarea);
+    saveHeader(header_textarea);
+    saveConcurrence(data_connerrence);
+    saveUrl(url_text)
 
     var arr = url_text.split('/');
     var arr_port = url_text.split(':');
@@ -127,14 +137,13 @@ function start_service() {
             url: url_text,
             method: type_select,
             concurrence: data_connerrence,
-            host: host_url,
             headers: header_text,
             body: body_textarea
         }
     };
 
     var myString = JSON.stringify(Obj);
-    
+
     console.log(myString);
 
     $.ajax({
@@ -145,7 +154,7 @@ function start_service() {
         crossOrigin: true,
         success: function (result) {
             console.log("start result : " + JSON.stringify(result));
-            var url_metrics = 'http://' + IP + ":" + PORT + '/api/v1/metrics';
+            var url_metrics = 'http://' + IP + '/api/v1/metrics';
             setInterval(function () {
                 ajaxd(url_metrics, {
                     conf: {
@@ -158,6 +167,39 @@ function start_service() {
     });
 
 }
+
+function saveHeader(header) {
+    localStorage.setItem("hc", header);
+}
+
+function readHeader() {
+    return localStorage.getItem("hc");
+}
+
+function saveBody(body) {
+    localStorage.setItem("bc", body);
+}
+
+function readBody() {
+    return localStorage.getItem("bc");
+}
+
+function saveUrl(url) {
+    localStorage.setItem("url", url);
+}
+
+function readUrl() {
+    return localStorage.getItem("url");
+}
+
+function saveConcurrence(concurrence) {
+    localStorage.setItem("concurrence", concurrence);
+}
+
+function readConcurrence() {
+    return localStorage.getItem("concurrence");
+}
+
 
 function test_load() {
     var speed = $('#speedtest').text();
