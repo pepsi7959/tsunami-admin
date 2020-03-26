@@ -8,8 +8,13 @@ $(function () {
 });
 
 function getShootingIP() {
-    return IP_SHOOTING = $('#ipshooting').val();
+    return $('#ipshooting').val();
 }
+
+function getScheme(){
+    return $('#scheme').val();
+}
+
 $(document).ready(function () {
 
     $('#data-load').val('');
@@ -72,8 +77,11 @@ function ajaxd(url_metric, params) {
 }
 
 function stop_service() {
+
     var IP = getShootingIP();
-    var url_stop = 'http://' + IP + '/api/v1/stop';
+    var scheme = getScheme();
+
+    var url_stop = scheme + '://' + IP + '/api/v1/stop';
 
     stop_load = false;
     console.log('stop');
@@ -98,8 +106,9 @@ function stop_service() {
 function start_service() {
 
     var IP = getShootingIP();
+    var scheme = getScheme();
 
-    var url_start = 'http://' + IP + '/api/v1/start';
+    var url_start = scheme + '://' + IP + '/api/v1/start';
 
     stop_load = true;
 
@@ -154,7 +163,7 @@ function start_service() {
         crossOrigin: true,
         success: function (result) {
             console.log("start result : " + JSON.stringify(result));
-            var url_metrics = 'http://' + IP + '/api/v1/metrics';
+            var url_metrics = scheme  + '://' + IP + '/api/v1/metrics';
             setInterval(function () {
                 ajaxd(url_metrics, {
                     conf: {

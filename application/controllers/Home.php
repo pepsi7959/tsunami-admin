@@ -37,10 +37,11 @@ class Home extends CI_Controller {
         $ipshooting = "";
         foreach($qret['results'] as $item){
 
-            $ipshooting .= ",".$item->domain.":".$item->port; 
+            $ipshooting .= ",".$item->domain; 
         }
          $ipshooting = substr($ipshooting, 1); 
         $data['ip'] = $ipshooting;
+        $data['scheme'] = $this->config->item('scheme');
         $data['profiles'] = $this->auth->get_profiles();
 		$this->load->view('templates/body', $data);
     }
