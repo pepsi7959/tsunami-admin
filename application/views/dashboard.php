@@ -62,6 +62,7 @@
                             <form class="card-body" id = "search">
 
                             <input type='hidden' id="ipshooting" value="<?php echo $ip; ?>" />
+                            <input type='hidden' id="scheme" value="<?php echo $scheme; ?>" />
                             <div>
                                     <div class="card-body row no-gutters align-items-center">
                                         <div class = "row" style = "width:100%">
