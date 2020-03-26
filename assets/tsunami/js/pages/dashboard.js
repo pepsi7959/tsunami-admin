@@ -11,9 +11,17 @@ function getShootingIP() {
     return $('#ipshooting').val();
 }
 
-function getScheme(){
+function getScheme() {
     return $('#scheme').val();
 }
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
 
 $(document).ready(function () {
 
@@ -24,10 +32,20 @@ $(document).ready(function () {
     $('#body').val(readBody());
     $('#data-load').val(readUrl());
     $('#data-concerrence').val(readConcurrence());
+    
+    const service = readService();
+
+    if( service == null ){
+        saveService(uuidv4());
+    }
 
     $("#load-btn").attr("onclick", "").click(function () {
-        start_service();
+
         if (this.value == "Start") {
+
+            if( start_service() != 0 ) {
+                return ;
+            }
 
             $(this).prop('value', 'Stop');
             if ($(this).hasClass("btn-success")) {
@@ -68,8 +86,7 @@ function ajaxd(url_metric, params) {
                 numload = parseFloat(rps).toFixed(2);
                 console.log(numload);
                 $('#speedtest').text(numload);
-                test_load();
-
+                updateGage();
             }
 
         });
@@ -92,7 +109,7 @@ function stop_service() {
         data: JSON.stringify({
             cmd: 'stop',
             conf: {
-                name: 'service1'
+                name: readService()
             }
         }),
         dataType: 'json',
@@ -130,20 +147,72 @@ function start_service() {
     saveConcurrence(data_connerrence);
     saveUrl(url_text)
 
-    var arr = url_text.split('/');
-    var arr_port = url_text.split(':');
+    var oc_protocol = "http";
+    var oc_port = "80";
+    var oc_host = "";
+    var oc_path = "/";
 
-    if (arr_port.length == '3') {
-        var host_url = arr[2];
+    urls = url_text.split(':');
+    if (urls.length == 3) {
+        /* use custom port http://[host]:[port][/path/...]*/
+        oc_protocol = urls[0];
+
+        if (oc_protocol != 'http' && oc_protocol != 'https') {
+            alert("กรุณาตรวจสอบ URL ใหม่ รองรับแค่ \"http\" หรือ \"https\" ");
+            return -1;
+        }
+
+        if (urls[1][0] == '/' && urls[1][1] == '/') {
+            oc_host = urls[1].substring(2);
+        } else {
+            alert("กรุณาตรวจสอบ URL ใหม่, http[s]://<hostname>[:port][/uri...]");
+            return -1;
+        }
+        var port_path = urls[2].split('/', 1); // :port/path1/path2
+        if (port_path.length > 1) {
+            oc_port = port_path[0];
+            oc_path = port_path[1];
+        } else {
+            oc_port = port_path[0];
+        }
+    } else if (urls.length == 2) {
+        /* use custom port http://[host][/path/...]*/
+        oc_protocol = urls[0];
+        if (oc_protocol != 'http' && oc_protocol != 'https') {
+            alert("กรุณาตรวจสอบ URL ใหม่ รองรับแค่ \"http\" หรือ \"https\" ");
+            return -1;
+        }
+
+        if (urls[1][0] == '/' && urls[1][1] == '/') {
+            host_path = urls[1].substring(2);
+            host_path = host_path.split('/', 1);
+            if (host_path.lenght > 1) {
+                oc_host = host_path[0];
+                oc_path = host_path[1];
+            } else if (host_path.lenght == 1) {
+                oc_host = host_path[0];
+            } else {
+                alert("กรุณาตรวจสอบ URL ใหม่");
+                return -1;
+            }
+        } else {
+            alert("กรุณาตรวจสอบ URL ใหม่");
+            return -1;
+        }
+
     } else {
-        var host_url = arr[2] + ':80';
+        alert("กรุณาตรวจสอบ URL ใหม่");
+        return -1;
     }
 
     var Obj = {
         cmd: 'start',
         conf: {
-            name: 'service1',
-            url: url_text,
+            name: readService(),
+            host: oc_host,
+            port: oc_port,
+            path: oc_path,
+            protocol: oc_protocol,
             method: type_select,
             concurrence: data_connerrence,
             headers: header_text,
@@ -159,22 +228,23 @@ function start_service() {
         type: "POST",
         url: url_start,
         data: myString,
+        contentType: "application/json",
         dataType: 'json',
         crossOrigin: true,
         success: function (result) {
             console.log("start result : " + JSON.stringify(result));
-            var url_metrics = scheme  + '://' + IP + '/api/v1/metrics';
+            var url_metrics = scheme + '://' + IP + '/api/v1/metrics';
             setInterval(function () {
                 ajaxd(url_metrics, {
                     conf: {
-                        name: 'service1',
+                        name: readService(),
                     }
                 });
             }, 2000);
         }
 
     });
-
+    return 0;
 }
 
 function saveHeader(header) {
@@ -209,8 +279,15 @@ function readConcurrence() {
     return localStorage.getItem("concurrence");
 }
 
+function saveService(service){
+    localStorage.setItem("service", service);
+}
 
-function test_load() {
+function readService(){
+    return localStorage.getItem("service");
+}
+
+function updateGage() {
     var speed = $('#speedtest').text();
     //alert(speed);
     $('#hand').animate({
